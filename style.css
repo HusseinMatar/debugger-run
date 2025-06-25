@@ -92,3 +92,49 @@ body {
   font-weight: bold;
   font-size: 2rem;
 }
+
+@media (max-width: 600px) {
+  body {
+    font-size: 16px;
+    padding: 0 10px;
+  }
+
+  .title {
+    font-size: 1.5rem;
+  }
+
+  #timer,
+  #level {
+    font-size: 1.2rem;
+  }
+
+  #game {
+    height: 180px;
+    margin-top: 2rem;
+  }
+
+  #player {
+    font-size: 36px;
+    left: 20px;
+  }
+
+  .obstacle {
+    font-size: 32px;
+  }
+
+  #message {
+    font-size: 1rem;
+    margin-top: 2rem;
+  }
+
+  #restartBtn {
+    font-size: 14px;
+    padding: 8px 16px;
+  }
+
+  @keyframes jump {
+    0%   { bottom: 0; }
+    50%  { bottom: 120px; } /* Higher jump on mobile */
+    100% { bottom: 0; }
+  }
+}
