@@ -138,3 +138,10 @@ body {
     100% { bottom: 0; }
   }
 }
+
+
+* {
+  user-select: none;
+  -webkit-user-select: none; /* Safari */
+  -ms-user-select: none;     /* IE/Edge */
+}

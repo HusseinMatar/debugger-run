@@ -41,11 +41,11 @@ const timer = setInterval(() => {
 
 // Funny level names logic
 function getLevelText(seconds) {
-  if (seconds < 30) return "🐣 Intern-level Debugger";
-  if (seconds < 80) return "💻 Junior Dev Who Can Console.log()";
-  if (seconds < 120) return "🔧 Mid-level Engineer: Kinda Gets It";
-  if (seconds < 140) return "⚡ Senior Dev: Fixes Bugs With Coffee";
-  if (seconds < 180) return "🧠 Tech Lead of the Matrix";
+  if (seconds < 20) return "🐣 Intern-level Debugger";
+  if (seconds < 40) return "💻 Junior Dev Who Can Console.log()";
+  if (seconds < 60) return "🔧 Mid-level Engineer: Kinda Gets It";
+  if (seconds < 80) return "⚡ Senior Dev: Fixes Bugs With Coffee";
+  if (seconds < 100) return "🧠 Tech Lead of the Matrix";
   return "🧙‍♂️ God Mode: The Bug Whisperer";
 }
 
