@@ -8,6 +8,8 @@ const levelDisplay = document.getElementById("level");
 let time = 0;
 let gameOver = false;
 let speed = 5;
+let timerId;
+let animationId;
 const minSpacing = 600;
 
 // Initialize obstacle positions
@@ -18,7 +20,7 @@ obstacles.forEach(() => {
   base += minSpacing + Math.random() * 400;
 });
 
-// Jump logic
+// Player jump logic
 function jump() {
   if (!player.classList.contains("jump")) {
     player.classList.add("jump");
@@ -28,8 +30,8 @@ function jump() {
 document.addEventListener("keydown", e => e.code === "Space" && jump());
 document.addEventListener("touchstart", jump);
 
-// Timer and level updates
-const timer = setInterval(() => {
+// Timer and level progression
+timerId = setInterval(() => {
   if (gameOver) return;
 
   time++;
@@ -39,7 +41,7 @@ const timer = setInterval(() => {
   if (time % 5 === 0) speed += 0.5;
 }, 1000);
 
-// Funny level names logic
+// Level title logic
 function getLevelText(seconds) {
   if (seconds < 20) return "🐣 Intern-level Debugger";
   if (seconds < 40) return "💻 Junior Dev Who Can Console.log()";
@@ -49,13 +51,13 @@ function getLevelText(seconds) {
   return "🧙‍♂️ God Mode: The Bug Whisperer";
 }
 
-// Obstacle movement and collision
+// Game loop & collision detection
 function moveObstacles() {
   if (gameOver) return;
 
   obstacles.forEach((obstacle, index) => {
     positions[index] -= speed;
-    obstacle.style.left = positions[index] + "px";
+    obstacle.style.left = `${positions[index]}px`;
 
     if (positions[index] < -50) {
       const maxPos = Math.max(...positions);
@@ -75,15 +77,18 @@ function moveObstacles() {
       gameOver = true;
       message.textContent = "❌ SyntaxError: Unexpected Failure";
       restartBtn.style.display = "inline-block";
-      clearInterval(timer);
+      clearInterval(timerId);
+      cancelAnimationFrame(animationId);
     }
   });
 
-  requestAnimationFrame(moveObstacles);
+  animationId = requestAnimationFrame(moveObstacles);
 }
 
 // Start the game
-requestAnimationFrame(moveObstacles);
+animationId = requestAnimationFrame(moveObstacles);
 
-// Restart
-restartBtn.addEventListener("click", () => location.reload());
+// Restart button
+restartBtn.addEventListener("click", () => {
+  location.reload(); // Reload page to reset game
+});
