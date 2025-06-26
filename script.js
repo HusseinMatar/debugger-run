@@ -36,7 +36,7 @@ timerId = setInterval(() => {
 
   time++;
   timerDisplay.textContent = `Uptime: ${time}s`;
-  levelDisplay.textContent = `Level:<br> ${getLevelText(time)}`;
+  levelDisplay.textContent = `Level: ${getLevelText(time)}`;
 
   if (time % 5 === 0) speed += 0.5;
 }, 1000);
