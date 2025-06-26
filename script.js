@@ -10,7 +10,7 @@ let gameOver = false;
 let speed = 5;
 let timerId;
 let animationId;
-const minSpacing = 600;
+const minSpacing = 300;
 
 // Initialize obstacle positions
 let positions = [];
